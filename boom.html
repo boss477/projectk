@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist — KHUSHI yadav | AI Automation Engineer</title>
+    <meta name="description" content="Portfolio landing page of KHUSHI yadav, AI Automation Engineer/Architect. Minimal, dark, modern design with hero, brand trust bar, and services.">
+    <meta name="keywords" content="AI, Automation, Engineer, Portfolio, Case Study, Branding, Web Design, n8n, LangChain, RAG">
+    <meta name="theme-color" content="#0b0e13">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Artist — KHUSHI yadav | AI Automation Engineer">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="https://api.dicebear.com/7.x/big-smile/png?seed=Khushi&radius=50&backgroundType=gradientLinear&backgroundRotation=45&backgroundColor=b6e3f4,c0aede&size=256">
+    <meta property="og:description" content="Portfolio landing page of KHUSHI yadav, AI Automation Engineer/Architect.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg-start: #0b0e13;
+        --bg-mid: #121620;
+        --accent-1: #F0B86E;
+        --accent-2: #6EE7F9;    
+        --accent-3: #A78BFA;
+      }
+      .glow { filter: drop-shadow(0 0 30px rgba(167,139,250,.35)); }
+      .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,0.06); }
+      .badge { box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+
+      /* Starry Background */
+      #star-container {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none; z-index: -1;
+        opacity: 0; transition: opacity 0.5s ease-in-out;
+      }
+      body.effects-enabled #star-container { opacity: 1; }
+      .star {
+        position: absolute; border-radius: 50%;
+        background-color: var(--accent-2);
+        box-shadow: 0 0 6px 1px rgba(110, 231, 249, 0.5);
+        animation: twinkle infinite;
+      }
+      @keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+      /* Cursor Trail (POWERFUL EFFECT) */
+      #cursor-trail-svg {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none; z-index: 9999;
+        opacity: 0; transition: opacity 0.5s ease-in-out;
+      }
+      body.effects-enabled #cursor-trail-svg { opacity: 1; }
+      #cursor-trail-path {
+        fill: none; stroke: url(#trail-gradient);
+        stroke-width: 6; stroke-linecap: round; stroke-linejoin: round;
+        filter: drop-shadow(0 0 8px white) drop-shadow(0 0 20px var(--accent-2));
+      }
+      
+      /* Project Banner Glow */
+      .banner-glow { filter: drop-shadow(0 4px 20px rgba(110, 231, 249, 0.4)); }
+      .banner-glow h4 { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+      /* Enhanced Animations */
+      @keyframes floaty { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-8px)} }
+      @keyframes pulse-glow { 0%,100%{ filter: drop-shadow(0 0 20px rgba(167,139,250,.25)); } 50%{ filter: drop-shadow(0 0 50px rgba(167,139,250,.7)); } }
+      @keyframes shimmer { 0%{ background-position: -200% 0; } 100%{ background-position: 200% 0; } }
+      @keyframes rotate-slow { 0%{ transform: rotate(0deg); } 100%{ transform: rotate(360deg); } }
+      
+      .floaty { animation: floaty 7s ease-in-out infinite; }
+      .pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+      .rotate-slow { animation: rotate-slow 25s linear infinite; }
+      
+      .text-gradient {
+        background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
+        background-size: 300% 300%;
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; animation: shimmer 4s ease-in-out infinite;
+      }
+      
+      .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .card-hover:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,.25); }
+      
+      .button-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .button-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,.2); }
+      .button-hover:active { transform: translateY(0); transition: transform 0.1s; }
+      
+      .icon-hover { transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+      .icon-hover:hover { transform: scale(1.2); filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)) brightness(1.3); }
+      
+      .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+      .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+      /* Accessibility Toggle */
+      #effects-toggle {
+        position: fixed; bottom: 1rem; right: 1rem; z-index: 10000;
+        background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white; padding: 0.5rem 1rem; border-radius: 999px;
+        cursor: pointer; font-size: 0.875rem; transition: background-color 0.3s, transform 0.3s;
+      }
+      #effects-toggle:hover { background-color: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-[#0b0e13] text-white antialiased">
+ <main>
+  <!-- Starry Background, Cursor Trail, and Accessibility Toggle -->
+  <div id="star-container"></div>
+  <svg id="cursor-trail-svg">
+    <defs>
+      <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="rgba(110, 231, 249, 0)" />
+        <stop offset="60%" stop-color="rgba(110, 231, 249, 0.8)" />
+        <stop offset="95%" stop-color="rgba(200, 240, 255, 1)" />
+        <stop offset="100%" stop-color="white" />
+      </linearGradient>
+    </defs>
+    <path id="cursor-trail-path" d=""></path>
+  </svg>
+  <button id="effects-toggle">Disable Effects</button>
+
+  <!-- Nav -->
+  <header class="relative z-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-white/10 rotate-slow glow-pulse">
+            <span class="text-xl font-black">a</span>
+          </span>
+          <span class="font-semibold" data-editable="true">K</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-white/80">
+          <a href="#" class="hover:text-white transition-transform duration-300 hover:scale-110" data-editable="true">About</a>
+          <a href="#projects" class="hover:text-white transition-transform duration-300 hover:scale-110" data-editable="true">latest projects</a>
+          <a href="#contact" class="hover:text-white transition-transform duration-300 hover:scale-110" data-editable="true">contact</a>
+        </nav>
+        <div class="flex items-center gap-4 text-sm">
+          <a class="hover:underline transition-transform duration-300 hover:scale-110" href="https://www.linkedin.com/in/khushiiiyadav/" aria-label="LinkedIn" data-editable="true">in</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-40 -left-40 h-80 w-80 rounded-full bg-gradient-to-tr from-[var(--accent-3)]/30 to-[var(--accent-2)]/30 blur-3xl pulse-glow"></div>
+      <div class="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-gradient-to-tr from-[var(--accent-2)]/20 to-[var(--accent-1)]/20 blur-3xl pulse-glow"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-6">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight reveal" data-editable="true">I'm KHUSHI YADAV, <span class="text-gradient">AI Automation Engineer/Architect</span></h1>
+        <p class="text-white/70 max-w-prose reveal" data-editable="true">I am available for project /freelance work. If you want to contact with me then please hit the hire me button.</p>
+        <div class="flex flex-wrap gap-3 reveal">
+          <button id="hireBtn" class="button-hover rounded-md bg-[var(--accent-1)] px-5 py-2.5 text-black font-semibold">Hire Me</button>
+          <a href="#projects" class="button-hover rounded-md border border-white/20 px-5 py-2.5 font-semibold text-white hover:bg-white/10" data-editable="true">Work Flow</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="relative mx-auto w-full max-w-md rounded-2xl bg-white p-4 text-black shadow-2xl floaty">
+          <img class="w-full h-72 object-contain" alt="Designer avatar" src="https://i.ibb.co/yV7B0S7/image.png" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services -->
+  <section id="services" class="py-14 md:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-center text-2xl sm:text-3xl font-extrabold reveal" data-editable="true">My Awesome <span class="text-gradient">Services</span></h2>
+      <p class="mx-auto mt-3 max-w-2xl text-center text-white/80 reveal" data-editable="true">I can bring intelligent automations via n8n, RAG, LangChain and coded workflows.</p>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass rounded-2xl p-6 card-hover reveal group">
+          <div class="h-12 w-12 rounded-xl bg-blue-600/20 text-blue-300 inline-flex items-center justify-center text-2xl icon-hover">
+            <img src="n8n.png" alt="N8N" class="h-full w-full object-cover rounded-xl">
+          </div>
+          <h3 class="mt-4 text-xl font-bold" data-editable="true">N8N</h3>
+          <p class="mt-2 text-white/70 text-sm" data-editable="true">Automate anything, connect everything.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover reveal group">
+          <div class="h-12 w-12 rounded-xl bg-green-600/20 text-green-300 inline-flex items-center justify-center text-2xl icon-hover">
+            <img src="lang'.png" alt="LangChain" class="h-full w-full object-cover rounded-xl">
+          </div>
+          <h3 class="mt-4 text-xl font-bold" data-editable="true">LangChain</h3>
+          <p class="mt-2 text-white/70 text-sm" data-editable="true">Chain AI logic into powerful workflows.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover reveal group">
+          <div class="h-12 w-12 rounded-xl bg-sky-500/20 text-sky-300 inline-flex items-center justify-center text-2xl icon-hover">
+            <img src="langggg.png" alt="LangGraph" class="h-full w-full object-cover rounded-xl">
+          </div>
+          <h3 class="mt-4 text-xl font-bold" data-editable="true">LangGraph</h3>
+          <p class="mt-2 text-white/70 text-sm" data-editable="true">Orchestrate agents with graph intelligence</p>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover reveal group">
+          <div class="h-12 w-12 rounded-xl bg-amber-500/20 text-amber-300 inline-flex items-center justify-center text-2xl icon-hover">
+            <img src="ragg.jpeg" alt="RAG" class="h-full w-full object-cover rounded-xl">
+          </div>
+          <h3 class="mt-4 text-xl font-bold" data-editable="true">RAG</h3>
+          <p class="mt-2 text-white/70 text-sm" data-editable="true">Smarter answers with context-aware retrieval.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-14 md:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold reveal" data-editable="true">My Latest <span class="text-gradient">Project</span></h2>
+      <p class="mt-2 text-white/80 max-w-2xl reveal" data-editable="true">I can bring intelligent automations via n8n and coded workflows.</p>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="bg-[#1c2128] rounded-2xl card-hover reveal overflow-hidden group">
+          <div class="py-5 text-center bg-gradient-to-r from-cyan-400 to-blue-500 banner-glow shadow-lg">
+              <h4 class="text-white font-bold text-xl tracking-wide">Conversational Agents</h4>
+          </div>
+          <img src="IMAGE1.jpg" alt="WhatsApp Assistant" class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="p-5"><h3 class="font-semibold" data-editable="true">WhatsApp Personal Assistant</h3><ul class="mt-2 space-y-1 text-sm text-white/80 list-disc list-inside"><li data-editable="true">Transcribes audio messages | Analyzes images | Text input</li><li data-editable="true">Generates response (audio + text)</li><li data-editable="true">Sends everything back via WhatsApp</li></ul></div>
+        </article>
+        <article class="bg-[#1c2128] rounded-2xl card-hover reveal overflow-hidden group">
+          <div class="py-5 text-center bg-gradient-to-r from-cyan-400 to-blue-500 banner-glow shadow-lg">
+              <h4 class="text-white font-bold text-xl tracking-wide">Conversational Agents</h4>
+          </div>
+          <img src="IMAGE2.jpg" alt="WhatsApp Booking Agent" class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="p-5"><h3 class="font-semibold" data-editable="true">WhatsApp-based AI Appointment Booking Agent</h3><ul class="mt-2 space-y-1 text-sm text-white/80 list-disc list-inside"><li data-editable="true">Reads, creates, and deletes Google Calendar events</li><li data-editable="true">Logs data into Google Sheets (add, read, update rows)</li><li data-editable="true">Sends email confirmations via Gmail</li><li data-editable="true">Handles everything through WhatsApp</li></ul></div>
+        </article>
+        <article class="bg-[#1c2128] rounded-2xl overflow-hidden card-hover reveal group">
+          <div class="overflow-hidden"><img src="IMAGE3.jpg" alt="LinkedIn Lead Scraper" class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
+          <div class="p-5"><h3 class="font-semibold" data-editable="true">LinkedIn Lead Scraper Telegram Bot</h3><ul class="mt-2 space-y-1 text-sm text-white/80 list-disc list-inside"><li data-editable="true">AI Agent captures LinkedIn leads → Talks to you on Telegram</li><li data-editable="true">Scrapes via Apollo | Apify</li><li data-editable="true">Logs details into Google Sheets</li><li data-editable="true">Sends cold emails / connection requests via Sheet URL</li></ul></div>
+        </article>
+        <article class="bg-[#1c2128] rounded-2xl overflow-hidden card-hover reveal group">
+          <div class="overflow-hidden"><img src="IMAGE4.jpg" alt="AI Agent SQL" class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
+          <div class="p-5"><h3 class="font-semibold" data-editable="true">AI Agent that Reads Files & Writes SQL</h3><ul class="mt-2 space-y-1 text-sm text-white/80 list-disc list-inside"><li data-editable="true">Monitors Google Drive</li><li data-editable="true">Extracts from PDF, Excel, CSV, Txt</li><li data-editable="true">Cleans, summarizes & stores into Supabase DB</li><li data-editable="true">Responds to queries via SQL + RAG-based vector search</li></ul></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hire Me -->
+  <section id="hire" class="py-14 md:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="relative mx-auto w-full max-w-xs reveal">
+        <div class="relative rounded-2xl bg-white p-4 text-black shadow-2xl floaty">
+          <img class="w-full h-auto object-contain" alt="3D character" src="https://i.ibb.co/2Z5zX3s/image.png" />
+        </div>
+      </div>
+      <div class="reveal text-center md:text-left">
+        <h3 class="text-2xl sm:text-3xl font-extrabold" data-editable="true">Why Hire Me For Your Project?</h3>
+        <p class="mt-3 text-white/80 max-w-prose mx-auto md:mx-0" data-editable="true">Experienced in building conversational agents , VOICE AI .</p>
+        <p class="mt-3 text-white/80 max-w-prose mx-auto md:mx-0" data-editable="true">I can bring intelligent automations via n8n,langchain,langgraph,RAG and coded workflows.</p>
+        <p class="mt-3 text-white/80 max-w-prose mx-auto md:mx-0" data-editable="true">Focused on practical,buisness-ready AI solutions.</p>
+        <button id="hireBtn2" class="button-hover mt-6 rounded-md bg-[var(--accent-1)] px-6 py-2 text-black font-semibold" data-editable="true">Hire Me</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-14 md:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-center text-2xl sm:text-3xl font-extrabold reveal" data-editable="true">Choose Your Best <span class="text-gradient">Package</span></h2>
+      <p class="mx-auto mt-2 max-w-2xl text-center text-white/70 reveal" data-editable="true">Choose your best package. I have different options for you. You can select as you need.</p>
+      <div class="mt-10 flex justify-center">
+        <div class="bg-[#1c2128] border border-gray-700 rounded-2xl p-8 max-w-md w-full flex flex-col text-center card-hover reveal">
+          <h3 class="text-2xl font-semibold" data-editable="true">Custom</h3>
+          <div class="mt-4 text-4xl font-extrabold flex items-center justify-center gap-2">
+            <span class="text-gradient" data-editable="true">Price Negotiable</span>
+            <div class="w-1 h-8 bg-white/50"></div>
+          </div>
+          <p class="mt-4 text-white/80" data-editable="true">Every project is unique. Let's discuss your specific needs and create a custom solution that fits your budget and requirements.</p>
+          <button class="mt-8 rounded-md border border-white/20 px-6 py-3 font-semibold hover:bg-white/10 transition-colors" data-editable="true">Contact Me</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-14 md:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h2 class="text-center text-2xl sm:text-3xl font-extrabold reveal" data-editable="true">Drop Me a Message</h2>
+      <p class="mx-auto mt-2 max-w-xl text-center text-white/80 reveal" data-editable="true">I'd love to hear from you. Whether it's a project idea, collaboration, or just a hello — feel free to reach out.</p>
+      <form id="contactForm" class="mt-8 grid grid-cols-1 gap-4 reveal">
+        <input name="name" placeholder="Name" required class="w-full rounded-md bg-[#1c2128] border border-gray-700 px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]/60" />
+        <input type="email" name="email" placeholder="Email" required class="w-full rounded-md bg-[#1c2128] border border-gray-700 px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]/60" />
+        <input name="subject" placeholder="Subject" required class="w-full rounded-md bg-[#1c2128] border border-gray-700 px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]/60" />
+        <textarea name="message" placeholder="Message" rows="5" required class="w-full rounded-md bg-[#1c2128] border border-gray-700 px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]/60"></textarea>
+        <button class="button-hover mt-2 inline-flex items-center justify-center rounded-md bg-[var(--accent-1)] px-5 py-3 text-black font-semibold" type="submit" data-editable="true">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-center text-white/50 text-sm reveal">
+    <p data-editable="true">© <span id="year"></span> KHUSHI yadav — All rights reserved.</p>
+  </footer>
+ </main>
+
+ <script type="module">
+  // --- Effects Controller ---
+  const effectsToggle = document.getElementById('effects-toggle');
+  const body = document.body;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let effectsEnabled = localStorage.getItem('effectsEnabled') === 'true' || (!localStorage.getItem('effectsEnabled') && !prefersReducedMotion);
+
+  function updateEffectsState() {
+    body.classList.toggle('effects-enabled', effectsEnabled);
+    effectsToggle.textContent = effectsEnabled ? 'Disable Effects' : 'Enable Effects';
+    localStorage.setItem('effectsEnabled', effectsEnabled);
+  }
+  
+  effectsToggle.addEventListener('click', () => {
+    effectsEnabled = !effectsEnabled;
+    updateEffectsState();
+  });
+  
+  updateEffectsState();
+
+  // --- Starry Background ---
+  const starContainer = document.getElementById('star-container');
+  const numStars = 150;
+  if (starContainer) {
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 1.5 + 0.5;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 8}s`;
+      star.style.animationDuration = `${Math.random() * 4 + 4}s`;
+      starContainer.appendChild(star);
+    }
+  }
+
+  // --- Blue Glowing Cursor Trail (POWERFUL EFFECT) ---
+  const trailSvg = document.getElementById('cursor-trail-svg');
+  const path = document.getElementById('cursor-trail-path');
+  const points = [];
+  const trailLength = 35; 
+  let lastMousePos = { x: -999, y: -999 };
+
+  function updatePath() {
+    if (!path || points.length === 0) return;
+    let d = `M ${points[0].x},${points[0].y}`;
+    for (let i = 1; i < points.length; i++) { d += ` L ${points[i].x},${points[i].y}`; }
+    path.setAttribute('d', d);
+  }
+
+  window.addEventListener('mousemove', e => {
+    lastMousePos = { x: e.clientX, y: e.clientY };
+  });
+
+  function animationFrame() {
+    if (effectsEnabled) {
+      if (points.length === 0 && lastMousePos.x > -999) {
+        for(let i = 0; i < trailLength; i++){ points.push({ ...lastMousePos }); }
+      } else if (points.length > 0) {
+        points[0].x += (lastMousePos.x - points[0].x) * 0.7;
+        points[0].y += (lastMousePos.y - points[0].y) * 0.7;
+        for(let i = 1; i < points.length; i++) {
+          points[i].x += (points[i-1].x - points[i].x) * 0.4;
+          points[i].y += (points[i-1].y - points[i].y) * 0.4;
+        }
+      }
+    } else if (points.length > 0) {
+      points.shift();
+    }
+    
+    if (points.length > 0) { updatePath(); } 
+    else if (path) { path.setAttribute('d', ''); }
+    
+    requestAnimationFrame(animationFrame);
+  }
+  animationFrame();
+
+  // --- Existing Page Logic ---
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
